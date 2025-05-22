@@ -11,21 +11,19 @@ import ZustandCounter from "./examples/zustand/Counter";
 function App() {
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
-      <h1>React State Management Examples</h1>
+      {/* <PropDrillingCounter /> */}
 
-      <PropDrillingCounter />
+      {/* <ContextCounter /> */}
 
-      <ContextCounter />
-
-      <Provider store={reduxStore}>
+      {/* <Provider store={reduxStore}>
         <ReduxCounter />
-      </Provider>
+      </Provider> */}
 
-      <Provider store={reduxRtkStore}>
+      {/* <Provider store={reduxRtkStore}>
         <ReduxRtkCounter />
-      </Provider>
+      </Provider> */}
 
-      <ZustandCounter />
+      {/* <ZustandCounter /> */}
     </div>
   );
 }

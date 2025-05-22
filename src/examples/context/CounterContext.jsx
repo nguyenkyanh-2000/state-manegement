@@ -4,12 +4,16 @@ const CounterContext = createContext();
 
 export const CounterProvider = ({ children }) => {
   const [count, setCount] = useState(0);
+  const [name, setName] = useState("John");
 
   const increment = () => setCount(count + 1);
   const decrement = () => setCount(count - 1);
+  const updateName = () => setName(name === "John" ? "Jane" : "John");
 
   return (
-    <CounterContext.Provider value={{ count, increment, decrement }}>
+    <CounterContext.Provider
+      value={{ count, increment, decrement, name, updateName }}
+    >
       {children}
     </CounterContext.Provider>
   );
@@ -24,6 +28,7 @@ export const useCounter = () => {
 };
 
 const Counter = () => {
+  console.log("Context Counter component rendered");
   return (
     <CounterProvider>
       <div
@@ -37,15 +42,20 @@ const Counter = () => {
 };
 
 const LevelOne = () => {
+  console.log("Context LevelOne component rendered");
+  const { name, updateName } = useCounter();
   return (
     <div style={{ padding: "20px", border: "1px solid #ddd", margin: "10px" }}>
       <h3>Level One Component</h3>
+      <p>Name: {name}</p>
+      <button onClick={updateName}>Toggle Name</button>
       <LevelTwo />
     </div>
   );
 };
 
 const LevelTwo = () => {
+  console.log("Context LevelTwo component rendered");
   const { count, increment, decrement } = useCounter();
 
   return (

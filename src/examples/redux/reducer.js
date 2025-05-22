@@ -1,7 +1,8 @@
-import { INCREMENT, DECREMENT } from "./actions";
+import { INCREMENT, DECREMENT, UPDATE_NAME } from "./actions";
 
 const initialState = {
   count: 0,
+  name: "John",
 };
 
 const counterReducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ const counterReducer = (state = initialState, action) => {
       return {
         ...state,
         count: state.count - 1,
+      };
+    case UPDATE_NAME:
+      return {
+        ...state,
+        name: state.name === "John" ? "Jane" : "John",
       };
     default:
       return state;
